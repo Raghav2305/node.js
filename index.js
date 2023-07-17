@@ -76,7 +76,7 @@ app.get("/employee1", (req, res) => {
 
 app.get("/updateemployee/:id", (req, res) => {
 
-    let name = "New name";
+    let name = "Bill Gates";
   
     let sql = `UPDATE employee SET name = '${name}' WHERE id = ${req.params.id}`;
   
