@@ -1,1 +1,3 @@
-node_modules/
+mysql-node-connection/node_modules
+node-react-to-do/Server/node_modules
+Notes-app/node_modules
