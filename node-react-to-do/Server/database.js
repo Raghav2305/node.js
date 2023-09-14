@@ -18,6 +18,8 @@ export async function getNotes() {
   }
   
   export async function getNote(id) {
+    console.log("Entered the database function")
+    console.log(`ID : ${id}`)
     const [rows] = await pool.query(`
     SELECT * 
     FROM notes
@@ -27,6 +29,9 @@ export async function getNotes() {
   }
   
   export async function createNote(title, contents) {
+    console.log("Entered create note function");
+    console.log(title);
+    console.log(contents);
     const [result] = await pool.query(`
     INSERT INTO notes (title, contents)
     VALUES (?, ?)
