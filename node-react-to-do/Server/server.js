@@ -31,7 +31,7 @@ const server = http.createServer(async (req, res) => {
     if(req.url === '/'){
         try{
             let allNotes = await getNotes();
-            console.log(allNotes)
+            // console.log(allNotes)
 
             const response = {
                 tasks: allNotes,
@@ -67,7 +67,7 @@ const server = http.createServer(async (req, res) => {
             else {
                 try{
                     const note = await getNote(id);
-                    console.log(note);
+                    // console.log(note);
                     res.setHeader('Content-Type', 'application/json');
                     res.end(JSON.stringify(note));
                 
@@ -94,10 +94,14 @@ const server = http.createServer(async (req, res) => {
             const Creatematch = req.url.match(/\/notes\/create\?title=([^&]+)&contents=([^&]+)/
             )
             console.log(Creatematch);
-            console.log("Entered creating note");
+            
             const createdNote = await createNote(Creatematch[1], Creatematch[2]);
+            const response = {
+                tasks: [createdNote],
+            };
+            console.log(response);
             res.setHeader('Content-Type', 'application/json');
-            res.end(JSON.stringify(createdNote));
+            res.end(JSON.stringify(response));
         }
 
         catch(error){
@@ -108,8 +112,6 @@ const server = http.createServer(async (req, res) => {
     }
     
 })
-
-
 
 server.listen(8080, () => {
     console.log("Server started on port 8080.")
