@@ -18,7 +18,6 @@ export async function getNotes() {
   }
   
   export async function getNote(id) {
-    console.log(`ID : ${id}`)
     const [rows] = await pool.query(`
     SELECT * 
     FROM notes
@@ -34,6 +33,14 @@ export async function getNotes() {
     `, [title, contents])
     const id = result.insertId
     return getNote(id)
+  }
+
+  export async function deleteNote(id){
+    const [deleted_Row] = await pool.query(
+      `DELETE FROM notes WHERE id = ?`,
+      [id]
+    )
+    return deleted_Row[0];
   }
 
 

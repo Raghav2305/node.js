@@ -1,7 +1,7 @@
 import http from "http"
 import fs from "fs"
 import path from "path"
-import { getNote, getNotes, createNote } from "./database.js"
+import { getNote, getNotes, createNote, deleteNote } from "./database.js"
 
 
 const server = http.createServer(async (req, res) => {
@@ -106,9 +106,34 @@ const server = http.createServer(async (req, res) => {
 
         catch(error){
             console.error("Error:", error);
-            res.statusCode = 500; // Set an appropriate status code for the error
+            res.statusCode = 500; 
             res.end("Cannot create note");
         }
+    }
+
+    if (req.url.match(/\/notes\/delete\/(\d+)/)){
+        const delete_url = req.url.match(/\/notes\/delete\/(\d+)/);
+        const delete_id = delete_url[1];
+
+        if(delete_id == undefined){
+            console.log("Invalid id: " + delete_id);
+            res.statusCode = 400; 
+            res.end("Invalid id");
+        }else{
+            try{
+                const response = await deleteNote(delete_id);
+                res.setHeader('Content-Type', 'application/json');
+                res.end(JSON.stringify({ message: "Note Deleted" }));    
+            }
+
+            catch(error){
+                console.log("Error", error)
+                res.statusCode = 500; 
+                res.end("Cannot create note");
+            }
+        }
+
+        
     }
     
 })

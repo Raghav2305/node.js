@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Table from "./Components/Table";
 import axios from "axios";
+import Delete from "./Components/Delete"
 
 export default function APP() {
   const [backendData, setBackendData] = useState({ tasks: [] });
@@ -25,12 +26,14 @@ export default function APP() {
     .then((data) => {
       
       setBackendData(data)
+      setFormData({title: "" , contents: ""})
     })
     .catch((error) => {
       console.log(error);
     })
-  
+
     
+  
   }
 
   useEffect(() => {
@@ -52,24 +55,50 @@ export default function APP() {
 
   return (
     <div>
+
+      <h1 className="app-title">My Notes App</h1>
+
+      <div className="form-container">
+    <form onSubmit={handleFormSubmit}>
+      <input
+        onChange={(e) =>
+          setFormData({
+            ...formData,
+            title: e.target.value,
+          })
+        }
+        placeholder="Title"
+        className="form-input"
+        label="Title"
+        id="input1"
+        type="text"
+      />
+
+      <input
+        onChange={(e) =>
+          setFormData({
+            ...formData,
+            contents: e.target.value,
+          })
+        }
+        placeholder="Contents"
+        className="form-input"
+        label="Contents"
+        id="input2"
+        type="text"
+      />
+
+      <button className="form-button" type="submit">
+        Create New Note
+      </button>
+    </form>
+  </div>
+
       <Table 
         onBackendData = {backendData.tasks}
       />
 
-      <form onSubmit={handleFormSubmit} >
-        
-        <input onChange={(e) => setFormData({
-          ...formData,
-          title : e.target.value
-        })} placeholder="Title" className="form-inputs" label="Title" id="input1" type="text" /> 
-        
-        <input onChange={(e) => setFormData({
-          ...formData,
-          contents : e.target.value
-        })} placeholder="Contents" className="form-inputs" label="Contents" id="input2" type="text" />
-
-        <button className="form-button" type="submit">Create New Note</button>
-      </form>
+      <Delete setBackendData={setBackendData} />
 
     </div>
     
