@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 
 export default function Table(props){
 
-    return (
-      
+  
+    return ( 
       <div>
       <table className="table">
     <thead>
@@ -19,8 +19,8 @@ export default function Table(props){
         props.onBackendData.map((task, i) => (
           <tr key={i} className="table-row">
             <th scope="row">{task.id}</th>
-            <td>{task.title}</td>
-            <td>{task.contents}</td>
+            <td>{decodeURIComponent(task.title)}</td>
+            <td>{decodeURIComponent(task.contents)}</td>
             <td>{task.created}</td>
           </tr>
         ))}

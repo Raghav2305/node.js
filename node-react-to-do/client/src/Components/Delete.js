@@ -31,7 +31,7 @@ export default function Delete(props){
         <div className="delete-div">
     <form onSubmit={handleButtonClick} className="delete-form">
       <label htmlFor="delButton">
-        Enter the ID of the note you want to delete
+       <b>Enter the ID of the note you want to delete</b> 
       </label>
 
       <input
@@ -39,6 +39,7 @@ export default function Delete(props){
         type="text"
         value={ID}
         onChange={(e) => setID(e.target.value)}
+        placeholder="ID"
       />
 
       <button className="delete-button" type="submit">

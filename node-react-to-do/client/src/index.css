@@ -12,13 +12,14 @@ code {
     monospace;
 }
 
-/* CSS Styles */
+
 
 .app-title {
   text-align: center;
   font-size: 35px;
   margin-bottom: 20px;
   margin-top: 20px;
+  color: rebeccapurple;
 }
 
 .form-container {
@@ -35,6 +36,7 @@ code {
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
+  background-color: whitesmoke;
 }
 
 .form-button {
@@ -52,28 +54,51 @@ code {
   background-color: #0056b3;
 }
 
+/* Table Styles */
 .table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
+  background-color: whitesmoke; /* Background color for the table */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Box shadow for the table */
 }
 
+/* Header Row Styles */
 .table-header {
-  background-color: #007bff;
-  color: #fff;
-  text-align: center;
+  background-color: #007bff; /* Header background color */
+  color: #fff; /* Header text color */
+  font-weight: bold;
 }
 
+/* Table Row Styles */
 .table-row:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: #f2f2f2; /* Alternate row background color */
 }
 
+.table-row:hover {
+  background-color: #dcdcdc; /* Hovered row background color */
+  cursor: pointer; /* Change cursor on hover */
+}
+
+/* Table Cell Styles */
 .table th,
 .table td {
-  border: 1px solid #ddd;
+  border: 1px solid #ddd; /* Border for table cells */
   padding: 8px;
   text-align: left;
 }
+
+/* Title and Contents Cell Styles */
+.table td:nth-child(2),
+.table td:nth-child(3) {
+  font-weight: bold; /* Make title and contents cells bold */
+}
+
+/* Created Cell Styles */
+.table td:nth-child(4) {
+  font-style: italic; /* Make created cell italic */
+}
+
+
 
 .delete-div {
   text-align: center;
@@ -89,6 +114,7 @@ code {
   align-items: center;
   max-width: 400px; 
   margin: 0 auto;
+  
 }
 
 .delete-input {
@@ -98,6 +124,7 @@ code {
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
+  background-color: whitesmoke;
 }
 
 .delete-button {
@@ -113,6 +140,8 @@ code {
 .delete-button:hover {
   background-color: #c82333;
 }
+
+
 
 
 

@@ -30,7 +30,7 @@ export async function getNotes() {
     const [result] = await pool.query(`
     INSERT INTO notes (title, contents)
     VALUES (?, ?)
-    `, [title, contents])
+    `, [decodeURIComponent(title), decodeURIComponent(contents)])
     const id = result.insertId
     return getNote(id)
   }
